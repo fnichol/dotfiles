@@ -3,7 +3,8 @@ require "irb/ext/save-history"
 require "yaml"
 
 # with some great help from:
-# http://github.com/iain/osx_settings/blob/master/.irbrc
+# - http://github.com/iain/osx_settings/blob/master/.irbrc
+# - http://github.com/Sutto/dot-files/blob/master/home/.irbrc
 
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"
@@ -80,6 +81,18 @@ extend_console 'rails3', defined?(ActiveSupport::Notifications), false do
   end
 end
 
+# Add a rails reload shortcut
+if defined?(Rails)
+  def rr
+    if Rails::VERSION::STRING >= "3.0.0"
+      puts "Reloading..."
+      ActionDispatch::Callbacks.new(lambda {}, false).call({})
+    else
+      reload!
+    end
+  end
+end
+
 # Add a method pm that shows every method on an object
 # Pass a regex to filter these
 extend_console 'pm', true, false do
@@ -117,6 +130,42 @@ end
 extend_console 'interactive_editor' do
   # no configuration needed
 end
+
+if RUBY_PLATFORM =~ /-darwin/
+  extend_console 'notify', true, false do
+
+    def say(text)
+      system "say", text.to_s
+    end
+
+    def growl(msg, title="irb-notify", sticky=false)
+      args = ["growlnotify", "-n", "irb", "-m", msg, title]
+      args << "-s" if sticky
+      system(*args)
+    end
+
+    def notify(loud=false, msg="I'm done")
+      if block_given?
+        yield
+        growl msg.to_s, "notify via irb", true
+        say msg.to_s if loud
+      else
+        puts ">>> Give me a block"
+        say "Give me a block, dumb ass."
+      end
+    end
+  end
+end
+
+extend_console 'benchmark' do
+  def bench(n=1e3,&b)
+    Benchmark.bmbm do |r|
+      r.report {n.to_i.times(&b)}
+    end
+  end
+end
+
+alias q exit
 
 # Show results of all extension-loading
 puts "#{ANSI[:LGRAY]}~> Console extensions:#{ANSI[:RESET]} #{$console_extensions.join(' ')}#{ANSI[:RESET]}"

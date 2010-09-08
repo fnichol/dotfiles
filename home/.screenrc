@@ -1,0 +1,24 @@
+# thanks to:
+# - http://magazine.redhat.com/2007/09/27/a-guide-to-gnu-screen/
+# - http://www.sun.com/bigadmin/features/articles/gnu_screen.jsp
+
+# rebind prefix key to Ctrl-\
+escape \034\034
+
+# skip the startup message
+startup_message off
+
+# Autodetach session on hangup instead of terminating screen completely
+autodetach on
+
+# Change to the home directory
+chdir
+
+# up the scrollback buffer
+defscrollback 100000
+
+# make the shell in every window as your login shell
+shell -$SHELL
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{C}%Y-%m-%d %{W}%c %{g}]'

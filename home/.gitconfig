@@ -1,6 +1,6 @@
 [user]
-	name = Fletcher Nichol
-	email = fnichol@nichol.ca
+  name = Fletcher Nichol
+  email = fnichol@nichol.ca
 
 [status]
   relativePaths = false
@@ -14,7 +14,7 @@
   st = status
 
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto

@@ -1,0 +1,20 @@
+[user]
+	name = Fletcher Nichol
+	email = fnichol@nichol.ca
+
+[status]
+  relativePaths = false
+
+[alias]
+  a = add
+  ca = commit -v -a
+  ci = commit -v
+  co = checkout
+  i = init
+  st = status
+
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto

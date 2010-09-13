@@ -12,6 +12,9 @@
   co = checkout
   i = init
   st = status
+  sub = submodule
+  subi = submodule init
+  subu = submodule update
 
 [color]
   branch = auto

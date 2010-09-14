@@ -9,6 +9,7 @@
   a = add
   ca = commit -v -a
   ci = commit -v
+  cl = clone
   co = checkout
   i = init
   st = status

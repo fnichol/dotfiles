@@ -3,7 +3,7 @@
 # - http://www.sun.com/bigadmin/features/articles/gnu_screen.jsp
 
 # rebind prefix key to Ctrl-\
-escape \034\034
+escape "``"
 
 # skip the startup message
 startup_message off

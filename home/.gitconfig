@@ -16,6 +16,7 @@
   d = diff
   i = init
   pgm = push golden master
+  rv = remote -v
   st = status
   sub = submodule
   subi = submodule init

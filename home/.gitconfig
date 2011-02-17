@@ -15,6 +15,7 @@
   co = checkout
   d = diff
   i = init
+  pgm = push golden master
   st = status
   sub = submodule
   subi = submodule init

@@ -7,10 +7,13 @@
 
 [alias]
   a = add
+  ap = add -p
+  aliases = !git config --get-regexp alias | sed -e 's/^alias\\.\\(.*\\)$/\\1/' -e 's/^\\([^ ]\\{1,\\}\\) \\(.*\\)$/\\1 = \\2/'
   ca = commit -v -a
   ci = commit -v
   cl = clone
   co = checkout
+  d = diff
   i = init
   st = status
   sub = submodule

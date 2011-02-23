@@ -21,6 +21,7 @@
   sub = submodule
   subi = submodule init
   subu = submodule update
+  track = branch --set-upstream
 
 [color]
   branch = auto

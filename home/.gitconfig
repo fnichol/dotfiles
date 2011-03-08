@@ -16,6 +16,8 @@
   d = diff
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   i = init
+  incoming = !git fetch && git log ..origin/master
+  outgoing = !git fetch && git log origin/master..
   pgm = push golden master
   rv = remote -v
   st = status

@@ -3,3 +3,5 @@ export rvm_gemset_create_on_use_flag=1
 
 # Re-enable pretty colors
 export rvm_pretty_print_flag=1
+export rvm_path="/Users/fnichol/.rvm"
+rvm_gemset_create_on_use_flag=1

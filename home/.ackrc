@@ -13,3 +13,4 @@ rdoc=.rdoc
 --js
 --markdown
 --actionscript
+--shell

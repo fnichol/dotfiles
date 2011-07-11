@@ -8,9 +8,12 @@ markdown=.markdown,.md,.mdown
 actionscript=.as
 --type-set
 rdoc=.rdoc
+--type-add
+sql=.ddl
 --ruby
 --css
 --js
 --markdown
 --actionscript
 --shell
+--sql

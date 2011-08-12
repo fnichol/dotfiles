@@ -1,5 +1,0 @@
-# Create a gemset when the gemset is used if it does not exist
-export rvm_gemset_create_on_use_flag=1
-
-# Re-enable pretty colors
-export rvm_pretty_print_flag=1

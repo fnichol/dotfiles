@@ -1,9 +1,21 @@
-# thanks to:
-# - http://magazine.redhat.com/2007/09/27/a-guide-to-gnu-screen/
-# - http://www.sun.com/bigadmin/features/articles/gnu_screen.jsp
+# Big thanks to:
+# * https://github.com/hashrocket/dotmatrix/blob/master/.screenrc
 
-# rebind prefix key to Ctrl-\
-escape "``"
+# rebind prefix key to Ctrl-z
+escape ^zz
+
+# hitting 'C-z C-z' will run Ctrl+Z (SIGTSTP, suspend as usual)
+bind ^Z stuff ^Z
+
+# hitting 'C-z z' will suspend the screen client
+bind z suspend
+
+# remove bind k default for kill and remap to K
+bind k
+bind K kill
+
+# use backtick key to act like selecting window 0 (the key to the left of 1)
+bind ` select 0
 
 # skip the startup message
 startup_message off

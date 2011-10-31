@@ -6,6 +6,8 @@ if command -v git >/dev/null ; then
   alias gap="git add -p"
   alias gci="git commit -v"
   alias gd="git diff"
+  alias gg="git graph"
+  alias gl="git log"
   alias gpu="git push"
   alias gst="git status"
 fi

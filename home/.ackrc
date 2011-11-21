@@ -13,6 +13,8 @@ sql=.ddl
 --ruby
 --css
 --js
+--type-add
+js=.coffee
 --markdown
 --actionscript
 --shell

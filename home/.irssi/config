@@ -273,7 +273,11 @@ settings = {
     user_name = "fnichol";
     nick = "fnichol";
   };
-  "fe-text" = { actlist_sort = "refnum"; scrollback_time = "3days"; };
+  "fe-text" = {
+    actlist_sort = "refnum";
+    scrollback_time = "3days";
+    scroll_page_count = "/1.02";
+  };
   "fe-common/core" = {
     # Solarized
     theme = "solarized-universal";

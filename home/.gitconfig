@@ -32,3 +32,6 @@
   diff = auto
   interactive = auto
   status = auto
+
+[core]
+  autocrlf = input

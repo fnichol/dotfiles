@@ -15,7 +15,7 @@
   co = checkout
   d = diff
   wd = diff --word-diff
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
   i = init
   incoming = !git fetch && git log ..origin/master
   outgoing = !git fetch && git log origin/master..

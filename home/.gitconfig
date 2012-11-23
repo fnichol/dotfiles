@@ -26,6 +26,7 @@
   subi = submodule init
   subu = submodule update
   trackup = branch --set-upstream
+  serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 
 [color]
   branch = auto

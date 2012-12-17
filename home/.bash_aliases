@@ -21,4 +21,5 @@ alias vim-light="vim '+colorscheme solarized' '+set background=light'"
 
 if command -v tmux >/dev/null ; then
   alias tn='tmux new -s "$(basename `pwd`)" || tmux at -t "$(basename `pwd`)"'
+  alias ta='tmux attach'
 fi

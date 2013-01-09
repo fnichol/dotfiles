@@ -21,3 +21,5 @@ js=.coffee
 --sql
 --java
 --python
+--ignore-dir=vendor/bundle
+--ignore-dir=.gem

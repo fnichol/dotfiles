@@ -6,25 +6,15 @@
   relativePaths = false
 
 [alias]
-  a = add
-  ap = add -p
   aliases = !git config --get-regexp alias | sed -e 's/^alias\\.\\(.*\\)$/\\1/' -e 's/^\\([^ ]\\{1,\\}\\) \\(.*\\)$/\\1 = \\2/'
-  ca = commit -v -a
-  ci = commit -v
   cl = clone
   co = checkout
-  d = diff
   wd = diff --word-diff
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
-  i = init
-  incoming = !git fetch && git log ..origin/master
-  outgoing = !git fetch && git log origin/master..
+  incoming = !git fetch && git log ..origin/HEAD
+  outgoing = !git fetch && git log origin/HEAD..
   pgm = push golden master
   rv = remote -v
-  st = status
-  sub = submodule
-  subi = submodule init
-  subu = submodule update
   trackup = branch --set-upstream
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 

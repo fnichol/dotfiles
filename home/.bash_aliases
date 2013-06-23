@@ -12,10 +12,6 @@ if command -v git >/dev/null ; then
   alias gst="git status"
 fi
 
-if command -v git-flow >/dev/null ; then
-  alias gf="git flow"
-fi
-
 alias mvim-light="mvim '+colorscheme solarized' '+set background=light'"
 alias vim-light="vim '+colorscheme solarized' '+set background=light'"
 

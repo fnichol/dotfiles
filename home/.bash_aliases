@@ -8,7 +8,7 @@ if command -v git >/dev/null ; then
   alias gd="git diff"
   alias gg="git graph"
   alias gl="git log"
-  alias gpu="git push"
+  alias gp="git push origin HEAD"
   alias gst="git status"
 fi
 

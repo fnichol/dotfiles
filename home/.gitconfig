@@ -13,6 +13,7 @@
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
   incoming = !git fetch && git log ..origin/HEAD
   outgoing = !git fetch && git log origin/HEAD..
+  poh = push origin HEAD
   pgm = push golden master
   rv = remote -v
   trackup = branch --set-upstream

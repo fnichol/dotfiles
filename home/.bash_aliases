@@ -19,3 +19,9 @@ if command -v tmux >/dev/null ; then
   alias tn='tmux new -s "$(basename `pwd`)" || tmux at -t "$(basename `pwd`)"'
   alias ta='tmux attach'
 fi
+
+alias kl='kitchen list'
+alias kc='kitchen converge'
+alias ks='kitchen setup'
+alias kv='kitchen verify'
+alias kd='kitchen destroy'

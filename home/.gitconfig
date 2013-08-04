@@ -18,6 +18,7 @@
   rv = remote -v
   trackup = branch --set-upstream
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+  st = status
 
 [color]
   branch = auto

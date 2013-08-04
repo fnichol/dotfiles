@@ -20,8 +20,3 @@ if command -v tmux >/dev/null ; then
   alias ta='tmux attach'
 fi
 
-alias kl='kitchen list'
-alias kc='kitchen converge'
-alias ks='kitchen setup'
-alias kv='kitchen verify'
-alias kd='kitchen destroy'

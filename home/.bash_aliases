@@ -20,3 +20,6 @@ if command -v tmux >/dev/null ; then
   alias ta='tmux attach'
 fi
 
+alias fruns='bin/foreman run rails s'
+alias frunc='bin/foreman run rails c'
+alias frun='bin/foreman run'

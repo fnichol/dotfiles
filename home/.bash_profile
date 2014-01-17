@@ -9,3 +9,4 @@ if [[ -s "${HOME}/.bash/bashrc" ]] ; then
 fi
 
 export EDITOR='vim'
+export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"

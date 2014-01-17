@@ -138,6 +138,3 @@ end
 
 # Show results of all extension-loading
 puts "#{ANSI[:LGRAY]}~> Console extensions:#{ANSI[:RESET]} #{$console_extensions.join(' ')}#{ANSI[:RESET]}"
-
-
-

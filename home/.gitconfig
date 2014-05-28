@@ -11,8 +11,8 @@
   co = checkout
   wd = diff --word-diff
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
-  incoming = !git fetch && git log ..origin/HEAD
-  outgoing = !git fetch && git log origin/HEAD..
+  incoming = "!_git_in() { git fetch ${1:-origin} && git log ..${1:-origin}/${2:-`git rev-parse --abbrev-ref HEAD`}; }; _git_in"
+  outgoing = "!_git_out() { git fetch ${1:-origin} && git log ${1:-origin}/${2:-`git rev-parse --abbrev-ref HEAD`}..; }; _git_out"
   poh = push origin HEAD
   pgm = push golden master
   rv = remote -v

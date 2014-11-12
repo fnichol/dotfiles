@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+set -e
+
+banner()  { echo "-----> $*"; }
+warn()    { echo ">>>>>> $*"; }
+
+DOCKER="${DOCKER:-docker}"
+REF=HEAD
+
+while [[ $# -gt 0 ]] ; do
+  token="$1"
+  shift
+
+  case "$token" in
+  --ref|-r)
+    REF="$1"
+    shift
+    ;;
+  --tag|-t)
+    TAG="$1"
+    shift
+    ;;
+  --dry-run|-n)
+    DRY_RUN=1
+    ;;
+  --verbose|-v)
+    VERBOSE=1
+    ;;
+  --help|--usage)
+    usage
+    exit 0
+    ;;
+  *)
+    NAME="$token"
+    ;;
+  esac
+done
+
+if [ -z "$NAME" ] ; then
+  warn "An app name was not given."
+  echo
+  exit 1
+fi
+
+ENVS="-e CURL_TIMEOUT=120"
+if [ -n "$http_proxy" ] ; then
+  ENVS="$ENVS -e http_proxy=$http_proxy"
+fi
+if [ -n "$https_proxy" ] ; then
+  ENVS="$ENVS -e https_proxy=$https_proxy"
+fi
+
+REF="$(git show --format='format:%h' --quiet $REF)"
+
+if [ -z "$TAG" ] ; then
+  TAG="$REF"
+fi
+
+SUBJECT="$(git show --format='format:%s' --quiet $REF)"
+
+# Run the builder script and attach to view output
+if [[ -z "$TAG" ]]; then
+  IMAGE=$NAME
+else
+  IMAGE=$NAME:$TAG
+fi
+
+banner "Creating docker image \"$IMAGE\" from app at $REF ($SUBJECT)"
+
+# Place the app inside the container
+banner "Preparing $NAME in an image"
+ID=$(git archive $REF | \
+  $DOCKER run -i -a stdin $ENVS progrium/buildstep \
+  /bin/bash -c "mkdir -p /app && tar -xC /app")
+trap "echo \"Terminating docker container running app prep: $ID\"; $DOCKER kill $ID" SIGINT SIGHUP
+test $($DOCKER wait $ID) -eq 0
+banner "Prepared $NAME image committed as $IMAGE"
+COMMIT_ID=$($DOCKER commit $ID $IMAGE)
+
+banner "Running builder on prepared image for $NAME"
+ID=$($DOCKER run -d $ENVS $IMAGE /build/builder)
+trap "echo \"Terminating container running builder: $ID\"; $DOCKER kill $ID >/dev/null; echo \"Removing intermediate image: $COMMIT_ID\"; $DOCKER rmi $COMMIT_ID" SIGINT SIGHUP
+$DOCKER attach --sig-proxy=false $ID
+test $($DOCKER wait $ID) -eq 0
+banner "Final $NAME image committed as $IMAGE"
+COMMIT_ID=$($DOCKER commit $ID $IMAGE)
+
+banner "Docker image \"$NAME:$TAG\" ($COMMIT_ID) build finished."

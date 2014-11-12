@@ -24,4 +24,5 @@ fi
 alias fruns='bin/foreman run rails s'
 alias frunc='bin/foreman run rails c'
 alias frun='bin/foreman run'
+alias bi="bundle install"
 alias fack='ack -f | ack '

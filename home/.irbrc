@@ -9,47 +9,6 @@ require "yaml"
 # Include this in your .irbrc # https://gist.github.com/zaius/2643079
 
 
-def unbundled_require(gem)
-  if defined?(::Bundler)
-    ruby_version_patch = ENV['RBENV_VERSION']
-    ruby_version_no_patch = ENV['RBENV_VERSION'].split('-').first
-    ruby_version_no_patch = '1.9.1' if ruby_version_no_patch == '1.9.3'
-
-    home = ENV["HOME"]
-    spec_path = Dir.glob("#{home}/.rbenv/versions/#{ruby_version_patch}/lib/ruby/gems/#{ruby_version_no_patch}/specifications/#{gem}-*.gemspec").last
-    if spec_path.nil?
-      warn "Couldn't find #{gem}"
-      warn "Run 'gem install #{gem}'"
-      return
-    end
-
-    spec = Gem::Specification.load spec_path
-    spec.activate
-  end
-
-  begin
-    require gem
-    yield if block_given?
-  rescue Exception => err
-    warn "Couldn't load #{gem}: #{err}"
-  end
-end
-
-unbundled_require 'awesome_print'
-
-begin
-  module IRB
-    class Irb
-      def output_value
-        ap @context.last_value
-      end
-    end
-  end
-rescue
-  puts 'install awesome_print to your global gem'
-end
-
-
 
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"

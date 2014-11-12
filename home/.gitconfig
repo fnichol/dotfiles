@@ -1,6 +1,6 @@
 [user]
-  name = Fletcher Nichol
-  email = fnichol@nichol.ca
+  name = Ryan Jones
+  email = ryan@system88.com
 
 [status]
   relativePaths = false
@@ -19,6 +19,7 @@
   rv = remote -v
   trackup = branch --set-upstream
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+  st = status
 
 [color]
   branch = auto
@@ -29,3 +30,6 @@
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore_global
+[heroku]
+[push]
+	default = simple

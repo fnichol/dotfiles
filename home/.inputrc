@@ -1,0 +1,5 @@
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set mark-symlinked-directories on
+"\e[A": history-search-backward
+"\e[B": history-search-forward

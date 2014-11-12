@@ -5,7 +5,7 @@ manage this repo. Assuming you have a ruby runtime and git installed:
 
 {{{
 gem install homesick
-homesick clone git://github.com/fnichol/dotfiles.git
+homesick clone git://github.com/ryanonrails/dotfiles.git
 homesick pull dotfiles && homesick symlink dotfiles
 }}}
 
@@ -15,3 +15,4 @@ Then keep up to date:
 homesick pull dotfiles && homesick symlink dotfiles
 }}}
 
+Initially forked from fnichol!

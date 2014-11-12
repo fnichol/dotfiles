@@ -6,6 +6,10 @@ require "yaml"
 # - http://github.com/iain/osx_settings/blob/master/.irbrc
 # - http://github.com/Sutto/dot-files/blob/master/home/.irbrc
 
+# Include this in your .irbrc # https://gist.github.com/zaius/2643079
+
+
+
 ANSI = {}
 ANSI[:RESET]     = "\e[0m"
 ANSI[:BOLD]      = "\e[1m"
@@ -44,27 +48,8 @@ rescue LoadError
 end
 $console_extensions = []
 
-# Wirble is a gem that handles coloring the IRB
-# output and history
-extend_console 'wirble' do
-  Wirble.init
-  Wirble.colorize
-end
-
-# awesome_print
 extend_console 'ap' do
-  IRB::Irb.class_eval do
-    def output_value
-      ap @context.last_value
-    end
-  end
-end
-
-# When you're using Rails 2 console, show queries in the console
-extend_console 'rails2', (ENV.include?('RAILS_ENV') && 
-    !Object.const_defined?('RAILS_DEFAULT_LOGGER')), false do
-  require 'logger'
-  RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
+  alias pp ap
 end
 
 # When you're using Rails 3 console, show queries in the console
@@ -78,18 +63,6 @@ extend_console 'rails3', defined?(ActiveSupport::Notifications), false do
     name  = event.payload[:name]
     sql   = event.payload[:sql].gsub("\n", " ").squeeze(" ")
     puts "  #{ANSI[:UNDERLINE]}#{color}#{name} (#{time})#{ANSI[:RESET]}  #{sql}"
-  end
-end
-
-# Add a rails reload shortcut
-if defined?(Rails)
-  def rr
-    if Rails::VERSION::STRING >= "3.0.0"
-      puts "Reloading..."
-      ActionDispatch::Callbacks.new(lambda {}, false).call({})
-    else
-      reload!
-    end
   end
 end
 
@@ -120,52 +93,12 @@ extend_console 'pm', true, false do
     max_args = data.collect {|item| item[1].size}.max
     data.each do |item| 
       print " #{ANSI[:YELLOW]}#{item[0].to_s.rjust(max_name)}#{ANSI[:RESET]}"
-      print "#{ANSI[:BLUE]}#{item[1].ljust(max_args)}#{ANSI[:RESET]}"
+      print "#{ANSI[:GREEN]}#{item[1].ljust(max_args)}#{ANSI[:RESET]}"
       print "   #{ANSI[:LGRAY]}#{item[2]}#{ANSI[:RESET]}\n"
     end
     data.size
   end
 end
-
-extend_console 'interactive_editor' do
-  # no configuration needed
-end
-
-if RUBY_PLATFORM =~ /-darwin/
-  extend_console 'notify', true, false do
-
-    def say(text)
-      system "say", text.to_s
-    end
-
-    def growl(msg, title="irb-notify", sticky=false)
-      args = ["growlnotify", "-n", "irb", "-m", msg, title]
-      args << "-s" if sticky
-      system(*args)
-    end
-
-    def notify(loud=false, msg="I'm done")
-      if block_given?
-        yield
-        growl msg.to_s, "notify via irb", true
-        say msg.to_s if loud
-      else
-        puts ">>> Give me a block"
-        say "Give me a block, dumb ass."
-      end
-    end
-  end
-end
-
-extend_console 'benchmark' do
-  def bench(n=1e3,&b)
-    Benchmark.bmbm do |r|
-      r.report {n.to_i.times(&b)}
-    end
-  end
-end
-
-alias q exit
 
 # Show results of all extension-loading
 puts "#{ANSI[:LGRAY]}~> Console extensions:#{ANSI[:RESET]} #{$console_extensions.join(' ')}#{ANSI[:RESET]}"

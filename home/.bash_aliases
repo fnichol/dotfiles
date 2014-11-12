@@ -14,14 +14,15 @@ fi
 
 alias mvim-light="mvim '+colorscheme solarized' '+set background=light'"
 alias vim-light="vim '+colorscheme solarized' '+set background=light'"
+alias mvim='open -a MacVim'
 
 if command -v tmux >/dev/null ; then
   alias tn='tmux new -s "$(basename `pwd` | sed 's/\\\\./-/g')" || tmux at -t "$(basename `pwd` | sed 's/\\\\./-/g')"'
   alias ta='tmux attach'
 fi
 
-alias kl='kitchen list'
-alias kc='kitchen converge'
-alias ks='kitchen setup'
-alias kv='kitchen verify'
-alias kd='kitchen destroy'
+alias fruns='bin/foreman run rails s'
+alias frunc='bin/foreman run rails c'
+alias frun='bin/foreman run'
+alias bi="bundle install"
+alias fack='ack -f | ack '

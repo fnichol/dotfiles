@@ -27,4 +27,4 @@ alias kv='kitchen verify'
 alias kd='kitchen destroy'
 
 # upgrade to the latest ChefDK release
-alias upgrade_chefdk='curl -L https://www.chef.io/chef/install.sh | sudo bash -s -- -P chefdk'
+alias upgrade_chefdk='curl -L https://www.chef.io/chef/install.sh | sudo -E bash -s -- -P chefdk'

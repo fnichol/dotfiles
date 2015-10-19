@@ -22,5 +22,7 @@ js=.coffee
 --java
 --python
 --make
+--go
+--rust
 --ignore-dir=vendor/bundle
 --ignore-dir=.gem

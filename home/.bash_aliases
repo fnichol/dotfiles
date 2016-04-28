@@ -4,7 +4,7 @@ fi
 
 if command -v git >/dev/null ; then
   alias gap="git add -p"
-  alias gci="git commit -v"
+  alias gci="git commit --signoff -v"
   alias gd="git diff"
   alias gg="git graph"
   alias gl="git log"

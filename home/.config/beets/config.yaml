@@ -1,0 +1,158 @@
+include:
+  - config.local.yaml
+
+plugins:
+  #
+  # # check
+  #
+  # * https://github.com/geigerzaehler/beets-check
+  #
+  # The beets plugin for paranoid obsessive-compulsive music geeks. beets-check
+  # lets you verify the integrity of your audio files. It computes and
+  # validates file checksums and uses third party tools to run custom tests on
+  # files.
+  #
+  # Required Python Libraries:
+  #
+  # * pip install git+git://github.com/geigerzaehler/beets-check.git@master
+  #
+  # Desirable System Libraries:
+  #
+  # * flac (to run `flac --test`)
+  #
+  - check
+  #
+  # # convert
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/convert.html
+  #
+  # The convert plugin lets you convert parts of your collection to a directory
+  # of your choice, transcoding audio and embedding album art along the way. It
+  # can transcode to and from any format using a configurable command line.
+  #
+  # Required System Packages:
+  #
+  # * FFmpeg
+  # * lame (for specific MP3 conversions)
+  #
+  - convert
+  #
+  # # fetchart
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/fetchart.html
+  #
+  # The fetchart plugin retrieves album art images from various sources on the
+  # Web and stores them as image files.
+  #
+  # Required Python Libraries:
+  #
+  # * pip install requests
+  #
+  - fetchart
+  #
+  # # fromfilename
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/fromfilename.html
+  #
+  # The fromfilename plugin helps to tag albums that are missing tags
+  # altogether but where the filenames contain useful information like the
+  # artist and title.
+  #
+  - fromfilename
+  #
+  # # info
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/info.html
+  #
+  # The info plugin provides a command that dumps the current tag values for
+  # any file format supported by beets. It works like a supercharged version of
+  # mp3info or id3v2.
+  #
+  - info
+  #
+  # # inline
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/inline.html
+  #
+  # The inline plugin lets you use Python to customize your path formats. Using
+  # it, you can define template fields in your beets configuration file and
+  # refer to them from your template strings in the paths: section (see
+  # Configuration).
+  #
+  - inline
+  #
+  # # lastgenre
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/lastgenre.html
+  #
+  # The MusicBrainz database does not contain genre information. Therefore,
+  # when importing and autotagging music, beets does not assign a genre. The
+  # lastgenre plugin fetches tags from Last.fm and assigns them as genres to
+  # your albums and items.
+  #
+  # Required Python Libraries:
+  #
+  # * pip install pylast
+  #
+  - lastgenre
+  #
+  # # the
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/the.html
+  #
+  # The the plugin allows you to move patterns in path formats. It’s suitable,
+  # for example, for moving articles from string start to the end.
+  #
+  - the
+  #
+  # # web
+  #
+  # * https://beets.readthedocs.io/en/stable/plugins/web.html
+  #
+  # The web plugin is a very basic alternative interface to beets that
+  # supplements the CLI. It can’t do much right now, and the interface is a
+  # little clunky, but you can use it to query and browse your music and—in
+  # browsers that support HTML5 Audio—you can even play music.
+  #
+  # Required Python Libraries:
+  #
+  # * pip install flask
+  #
+  - web
+
+# If this per_disc_numbering is enabled, then the first (non-pregap) track on
+# each disc always has track number 1.
+per_disc_numbering: yes
+
+# Under this key, every line defines a new template field; the key is the name
+# of the field (you’ll use the name to refer to the field in your templates)
+# and the value is a Python expression or function body.
+item_fields:
+  # Creates a disc and track identifier if the release is multi-disc. For
+  # example `2-05` if there are more than one discs and otherwise `05`.
+  disc_and_track: u'%01i-%02i' % (disc, track) if
+                  disctotal > 1 else u'%02i' % (track)
+
+# Convert all non-ASCII characters in paths to ASCII equivalents. The changes
+# take place before applying the replace configuration and are roughly
+# equivalent to wrapping all your path templates in the %asciify{} template
+# function.
+asciify_paths: yes
+
+paths:
+  default: %lower{$format}/%the{$albumartist}/%the{$album}%aunique{}/$disc_and_track $title
+
+lastgenre:
+  canonical: yes
+  whitelist: ~/.config/beets/genres.txt
+  fallback: unknown
+
+fetchart:
+  store_source: yes
+
+convert:
+  format: mp3
+  formats:
+    mp3:
+      command: convert-to-gapless-mp3.sh "$source" "$dest"
+      extension: mp3

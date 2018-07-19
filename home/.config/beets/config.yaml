@@ -3,24 +3,14 @@ include:
 
 plugins:
   #
-  # # check
+  # # badfiles
   #
-  # * https://github.com/geigerzaehler/beets-check
+  # * https://beets.readthedocs.io/en/stable/plugins/badfiles.html
   #
-  # The beets plugin for paranoid obsessive-compulsive music geeks. beets-check
-  # lets you verify the integrity of your audio files. It computes and
-  # validates file checksums and uses third party tools to run custom tests on
-  # files.
+  # The badfiles plugin adds a beet bad command to check for missing and
+  # corrupt files.
   #
-  # Required Python Libraries:
-  #
-  # * pip install git+git://github.com/geigerzaehler/beets-check.git@master
-  #
-  # Desirable System Libraries:
-  #
-  # * flac (to run `flac --test`)
-  #
-  - check
+  - badfiles
   #
   # # convert
   #

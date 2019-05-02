@@ -24,5 +24,6 @@ js=.coffee
 --make
 --go
 --rust
+--vim
 --ignore-dir=vendor/bundle
 --ignore-dir=.gem

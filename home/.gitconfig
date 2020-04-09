@@ -9,7 +9,6 @@
   aliases = !git config --get-regexp alias | sed -e 's/^alias\\.\\(.*\\)$/\\1/' -e 's/^\\([^ ]\\{1,\\}\\) \\(.*\\)$/\\1 = \\2/'
   cl = clone
   co = checkout
-  wd = diff --word-diff
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)(%an)%Creset' --abbrev-commit --date=relative
   incoming = "!_git_in() { git fetch ${1:-origin} && git log ..${1:-origin}/${2:-$(git rev-parse --abbrev-ref HEAD)}; }; _git_in"
   outgoing = "!_git_out() { git fetch ${1:-origin} && git log ${1:-origin}/${2:-$(git rev-parse --abbrev-ref HEAD)}..; }; _git_out"
@@ -17,8 +16,9 @@
   pr = "!_git_pr() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; _git_pr"
   roh = "!_git_roh() { git rebase ${1:-origin}/${2:-$(git rev-parse --abbrev-ref HEAD)}; }; _git_roh"
   rv = remote -v
-  trackup = branch --set-upstream
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+  trackup = branch --set-upstream
+  wd = diff --word-diff
 
 [color]
   branch = auto

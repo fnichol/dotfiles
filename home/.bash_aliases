@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if command -v git >/dev/null; then
   alias gap="git add -p"
   alias gci="git commit --signoff -v"

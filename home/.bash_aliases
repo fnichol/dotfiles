@@ -9,8 +9,3 @@ if command -v git >/dev/null; then
   alias gl="git l"
   alias gst="git st"
 fi
-
-if command -v tmux >/dev/null; then
-  alias tn='tmux new -s "$(basename `pwd` | sed 's/\\\\./-/g')" || tmux at -t "$(basename `pwd` | sed 's/\\\\./-/g')"'
-  alias ta='tmux attach'
-fi

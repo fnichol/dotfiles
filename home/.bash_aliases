@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 if command -v git >/dev/null; then
-  alias gap="git add -p"
-  alias gci="git commit --signoff -v"
-  alias gd="git diff"
-  alias gg="git graph"
-  alias gl="git log"
-  alias gp="git push origin HEAD"
-  alias gst="git status"
+  # Git aliases are specified in `~/.gitconfig`
+  alias gap="git ap"
+  alias gci="git ci"
+  alias gd="git d"
+  alias gg="git g"
+  alias gl="git l"
+  alias gst="git st"
 fi
 
 if command -v tmux >/dev/null; then

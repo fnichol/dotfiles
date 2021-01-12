@@ -1,0 +1,49 @@
+" # References and Credits
+" - <https://github.com/JetBrains/ideavim>
+" - <https://gist.github.com/dewaka/ef947e52767bf453eaf77c852051eb7e>
+" - <https://gist.github.com/ravenxrz/dba8dd0c1eba4bb039f008f56867e083>
+"
+
+" no beeping
+set visualbell
+" no bell on errors
+set noerrorbells
+
+" remap leader key to comma
+let mapleader=','
+
+" ctrl+h: nav to left window
+nnoremap <C-h> <C-w>h
+" ctrl+j: nav to the window below
+nnoremap <C-j> <C-w>j
+" ctrl+k: nav to the window above
+nnoremap <C-k> <C-w>k
+" ctrl+l: nav to the right window
+nnoremap <C-l> <C-w>l
+" opens new vert split and switch over to it
+map <leader>w <C-w>v<C-w>l
+
+" Navigates to the previous diagnostic
+nmap [g :action GotoPreviousError<CR>
+" Navigates to the next diagnostic
+nmap ]g :action GotoNextError<CR>
+
+" Goes to type definition
+nmap gd :action GotoDeclaration<CR>
+" Goes to implementation
+nmap gi :action GotoImplementation<CR>
+" Goes to references
+nmap gr :action ShowUsages<CR>
+
+" Symbol renaming
+nmap <leader>rn :action RenameElement<CR>
+
+" Opens a fuzzy finder open
+map <leader>t :action GotoFile<CR>
+" Opens a fuzzy finder recent buffers/files
+map <leader>b :action RecentFiles<CR>
+
+" enable emulated surround plugin
+set surround
+" enable emulated commentary plugin
+set commentary

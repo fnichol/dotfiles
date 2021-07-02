@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# shellcheck shell=sh disable=SC2039
+# shellcheck shell=sh disable=SC3043
 
 print_usage() {
   local program version author

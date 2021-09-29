@@ -4,10 +4,28 @@
 " - <https://gist.github.com/ravenxrz/dba8dd0c1eba4bb039f008f56867e083>
 "
 
+" enable emulated surround plugin
+set surround
+" enable emulated commentary plugin
+set commentary
+" enable emulated NERDTree plugin
+set NERDTree
+
+" enable join via the IDE
+set ideajoin
+" sync IDE bookmarks and Vim marks
+set ideamarks
+
 " no beeping
 set visualbell
 " no bell on errors
 set noerrorbells
+" Show where the search pattern typed so far matches
+set incsearch
+" Set message on the status line to show current mode
+set showmode
+" Print the line number in front of each line
+set number
 
 " remap leader key to comma
 let mapleader=','
@@ -35,15 +53,16 @@ nmap gi :action GotoImplementation<CR>
 " Goes to references
 nmap gr :action ShowUsages<CR>
 
+" Go to [count] Older cursor position in jump list
+nmap <C-o> :action Back<CR>
+
 " Symbol renaming
 nmap <leader>rn :action RenameElement<CR>
+
+" open NERDTree
+map <leader>d :NERDTreeToggle<CR>
 
 " Opens a fuzzy finder open
 map <leader>t :action GotoFile<CR>
 " Opens a fuzzy finder recent buffers/files
 map <leader>b :action RecentFiles<CR>
-
-" enable emulated surround plugin
-set surround
-" enable emulated commentary plugin
-set commentary

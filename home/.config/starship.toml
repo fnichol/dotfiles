@@ -1,0 +1,6 @@
+[git_status]
+modified = "±"
+stashed = ""
+
+[ruby]
+detect_variables = []

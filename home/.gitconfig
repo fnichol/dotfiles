@@ -8,6 +8,7 @@
 [alias]
   ap = add -p
   aliases = !git config --get-regexp alias | sed -e 's/^alias\\.\\(.*\\)$/\\1/' -e 's/^\\([^ ]\\{1,\\}\\) \\(.*\\)$/\\1 = \\2/'
+  bl = blame -w -M -C
   ci = commit --signoff -v
   cl = clone
   co = checkout

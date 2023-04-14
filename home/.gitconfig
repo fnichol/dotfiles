@@ -20,8 +20,11 @@
   outgoing = "!_git_out() { git fetch ${1:-origin} && git log ${1:-origin}/${2:-$(git rev-parse --abbrev-ref HEAD)}..; }; _git_out"
   poh = "!_git_poh() { git push origin $(git rev-parse --abbrev-ref HEAD) $@; }; _git_poh"
   pr = "!_git_pr() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; _git_pr"
+  puh = "!_git_puh() { git push upstream $(git rev-parse --abbrev-ref HEAD) $@; }; _git_puh"
   roh = "!_git_roh() { git rebase origin/$(git rev-parse --abbrev-ref HEAD) $@; }; _git_roh"
   rom = "!_git_rom() { git rebase origin/$(basename $(git symbolic-ref refs/remotes/origin/HEAD)) $@; }; _git_rom"
+  ruh = "!_git_ruh() { git rebase upstream/$(git rev-parse --abbrev-ref HEAD) $@; }; _git_ruh"
+  rum = "!_git_rum() { git rebase upstream/$(basename $(git symbolic-ref refs/remotes/upstream/HEAD)) $@; }; _git_rum"
   rv = remote -v
   serve = !git daemon --reuseaddr --verbose --base-path=. --export-all ./.git
   st = status

@@ -1,0 +1,72 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[colors.indexed_colors]]
+color = "#cda869"
+index = 16
+
+[[colors.indexed_colors]]
+color = "#9b703f"
+index = 17
+
+[[colors.indexed_colors]]
+color = "#323537"
+index = 18
+
+[[colors.indexed_colors]]
+color = "#464b50"
+index = 19
+
+[[colors.indexed_colors]]
+color = "#838184"
+index = 20
+
+[[colors.indexed_colors]]
+color = "#c3c3c3"
+index = 21
+
+[colors.bright]
+black = "#5f5a60"
+blue = "#7587a6"
+cyan = "#afc4db"
+green = "#8f9d6a"
+magenta = "#9b859d"
+red = "#cf6a4c"
+white = "#ffffff"
+yellow = "#f9ee98"
+
+[colors.normal]
+black = "#1e1e1e"
+blue = "#7587a6"
+cyan = "#afc4db"
+green = "#8f9d6a"
+magenta = "#9b859d"
+red = "#cf6a4c"
+white = "#a7a7a7"
+yellow = "#f9ee98"
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#a7a7a7"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+opacity = 0.9

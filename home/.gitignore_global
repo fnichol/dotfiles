@@ -1,3 +1,11 @@
 .gem/
 rusty-tags.vi
 .DS_Store
+
+# Claude configuration
+#
+# User-specific Claude overrides; ignored to keep personal preferences private
+CLAUDE.local.md
+# Local Claude settings and preferences; ignored to avoid committing
+# user-specific config
+.claude/settings.local.json

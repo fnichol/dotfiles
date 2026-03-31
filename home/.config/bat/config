@@ -1,0 +1,3 @@
+# By default, show Git modifications and grid
+# (but no line numbers or file headers)
+--style="changes,grid,snip"

@@ -9,3 +9,8 @@ CLAUDE.local.md
 # Local Claude settings and preferences; ignored to avoid committing
 # user-specific config
 .claude/settings.local.json
+
+# Mise configuration
+#
+# Local configuration overrides
+mise.local.toml

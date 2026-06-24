@@ -1,3 +1,9 @@
 # By default, show Git modifications and grid
 # (but no line numbers or file headers)
 --style="changes,grid,snip"
+
+# Map Butuane configuration files as YAML
+--map-syntax='*.bu:yaml'
+
+# Map Ignition configuration files as JSON
+--map-syntax='*.ign:json'
